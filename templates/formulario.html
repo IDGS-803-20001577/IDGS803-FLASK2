@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{%from "_macros.html" import render_input %}
+
+<form name="form1" method="post">
+    <div class="control_group">
+        <div class="controls">
+            <div class="control-group">
+
+                {{render_input("txtMatricula", "Matricula")}}
+                {{render_input("txtNombre", "Nombre")}}
+                {{render_input("txtEdad", "Edad",type="number")}}
+                {{render_input("txtCorreo", "Correo",type="email")}}
+                {{render_input("txtContraseña", "Contraseña",type="password")}}
+                
+                    <button type="submit" class="btn btn-default btn-primary" >
+                        <i class="icon-book icon-white"></i>
+                    </button>
+            </div>
+        </div>
+    </div>
+</form>
+{%endblock%}
+
+{% macro render_field(field) %}
+  <dt>{{ field.label }}
+  <dd>{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}

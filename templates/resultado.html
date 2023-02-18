@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<div class="col-xs-6">
+    {%from "_macros.html" import render %}
+    <form action="" method="post">
+        
+        {{render("txtNumero", "Numero",type="number")}}
+
+        
+        <button type="submit" class="btn btn-default btn-primary" >
+            <i class="icon-book icon-white"></i>Crear Cajas
+        </button>
+    </form>
+</div>
+
+{% endblock %}
