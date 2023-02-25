@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Generar casillas</h1>
+
+<form method="post" action="/resultado">
+
+    <input type="hidden" name="num_casillas" value="{{ num_casillas }}">
+
+    {% for i in range(num_casillas) %}
+
+    <label for="num{{ i }}">Ingresa un número para la casilla {{ i }}:</label>
+
+    <input type="number" id="num{{ i }}" name="num{{ i }}"><br>
+
+    {% endfor %}
+
+    <input type="submit" value="Calcular suma">
+
+</form>
+{% endblock %}

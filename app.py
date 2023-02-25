@@ -22,20 +22,36 @@ def alumnos():
 # ------------------------------------------------------------------------------------------
 
 
-@app.route("/practica")
-def practica():
-    return render_template("practica.html")
+@app.route('/')
+def index():
+    return render_template('practica.html')
 
 
-# ------------------------------------------------------------------------------------------
+@app.route('/generar', methods=['POST'])
+def generate():
+    num_casillas = int(request.form['numero'])
+    return render_template('generar.html', num_casillas=num_casillas)
 
-@app.route("/resultado", methods=["GET","POST"])
-def resultado():
-    numeroCajas = request.form.get("txtNumero")
-    if request.method == 'POST':
-        print(numeroCajas)
-    return render_template("resultado.html",numeroCajas=numeroCajas)
 
+@app.route('/resultado', methods=['POST'])
+def calculate():
+    num_casillas = int(request.form['num_casillas'])
+    total = 0
+    multiplicacion = 1
+    promedio = 0
+
+
+    for i in range(num_casillas):
+        num = int(request.form['num'+str(i)])
+        total += num
+
+        
+        multiplicacion *= num
+
+        promedio = total / num_casillas  
+
+    
+    return render_template('resultado.html', total=total, multiplicacion=multiplicacion, promedio=promedio)
 
 if __name__=="_main_":
     app.run(debug=True)

@@ -2,18 +2,11 @@
 
 {% block content %}
 
+<h1>Resultado de la suma</h1>
+    <p>La suma de los números ingresados en las casillas es: {{ total }}</p>
 
-<div class="col-xs-6">
-    {%from "_macros.html" import render %}
-    <form action="" method="post">
-        
-        {{render("txtNumero", "Numero",type="number")}}
+    <p>La multiplicacion de los números ingresados en las casillas es: {{ multiplicacion }}</p>
 
-        
-        <button type="submit" class="btn btn-default btn-primary" >
-            <i class="icon-book icon-white"></i>Crear Cajas
-        </button>
-    </form>
-</div>
-
+    <p>El Promedio de los números ingresados en las casillas es: {{ promedio }}</p>
+  
 {% endblock %}
