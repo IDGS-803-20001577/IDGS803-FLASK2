@@ -1,11 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<h1>Número de casillas y suma</h1>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+    }
+    </style>
 
 <form method="post" action="/generar">
-
+    <h1>Número de casillas y suma</h1>
     <label for="numero">Ingresa un número:</label>
 
     <input type="number" id="numero" name="numero">

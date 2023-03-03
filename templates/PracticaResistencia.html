@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+    form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 160vh;
+		}
+    h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+    }
+
+    table{
+        border-collapse: collapse;
+        width: 100px;
+    }
+    th,td{
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    td.banda1{
+        background-color: {{banda1}};
+    }
+    td.banda2{
+        background-color: {{banda2}};
+    }
+    td.banda3{
+        background-color: {{banda3}};
+    }
+    td.resistencia{
+        background-color: {{tolerancia}};
+    }
+
+</style>
+
+<h1>Calculadora de Resistencias</h1>
+  
+<form action="/calcularResistencia" method="POST">
+
+    <img src="../static/img/1660079672_archive_Tabla_de_colores_para_resistencias_electricas_1_1024x682_rz750.jpeg" alt="">
+
+    <label for="banda1">Banda 1:</label>
+    <select name="banda1" id="banda1">
+        <option value="black">Negro</option>
+        <option value="brown">Café</option>
+        <option value="red">Rojo</option>
+        <option value="orange">Naranja</option>
+        <option value="yellow">Amarillo</option>
+        <option value="green">Verde</option>
+        <option value="blue">Azul</option>
+        <option value="purple">Violeta</option>
+        <option value="grey">Gris</option>
+        <option value="white">Blanco</option>
+    </select>
+    
+    <label for="banda2">Banda 2:</label>
+    <select name="banda2" id="banda2">
+        <option value="black">Negro</option>
+        <option value="brown">Café</option>
+        <option value="red">Rojo</option>
+        <option value="orange">Naranja</option>
+        <option value="yellow">Amarillo</option>
+        <option value="green">Verde</option>
+        <option value="blue">Azul</option>
+        <option value="purple">Violeta</option>
+        <option value="grey">Gris</option>
+        <option value="white">Blanco</option>
+    </select>
+    
+    <label for="banda3">Banda 3:</label>
+    <select name="banda3" id="banda3">
+        <option value="black">Negro</option>
+        <option value="brown">Café</option>
+        <option value="red">Rojo</option>
+        <option value="orange">Naranja</option>
+        <option value="yellow">Amarillo</option>
+        <option value="green">Verde</option>
+        <option value="blue">Azul</option>
+        <option value="purple">Violeta</option>
+        <option value="grey">Gris</option>
+        <option value="white">Blanco</option>
+    </select>
+    
+    <br>
+    
+    <label for="tolerancia">Tolerancia:</label>
+    <select name="tolerancia" id="tolerancia">
+        <option value="gold">Oro</option>
+        <option value="silver">Plata</option>
+        <option value="ninguna">Ninguna</option>
+    </select>
+    
+    <br>
+    <br>
+    
+    <button type="submit" class="btn btn-default btn-primary" >
+        <i>Calcular Resistencia</i>
+    </button>
+
+<h1>Resultado del cálculo de la resistencia</h1>
+    
+<p>La resistencia tiene las siguientes características:</p>
+<ul>
+    <table>
+        <tr>
+          <th>Primera Banda</th>
+          <th>Segunda Banda</th>
+          <th>Tercer Banda</th>
+          <th>Resistencia</th>
+          <th>Valor</th>
+          <th>Minimo</th>
+          <th>Maximo</th>
+        </tr>
+        <tr>
+          <td class="banda1">{{banda1}}</td>
+          <td class="banda2">{{banda2}}</td>
+          <td class="banda3">{{banda3}}</td>
+          <td class="resistencia">{{tolerancia}}</td>
+          <td>{{valor}}</td>
+          <td>{{minimo}}</td>
+          <td>{{maximo}} </td>
+        </tr>
+      </table>
+</ul>
+
+</form>
+
+{% endblock %}

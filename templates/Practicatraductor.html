@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css">
+<style>
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+.row {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -10px;
+		}
+.col {
+			flex: 1;
+			padding: 0 10px;
+		}
+.col:first-child {
+			padding-left: 0;
+		}
+.col:last-child {
+			padding-right: 0;
+		}
+</style>
+
+<div class="mensaje" >
+    {% if translations %}
+    <ul>
+    {% for translation in translations %}
+
+    {% endfor %}
+    </ul>
+{% else %}
+    {%with messages = get_flashed_messages() %}
+    {%if messages %}
+    {%for  message in messages%}
+    <div  class="alert alert-danger">
+        {{message}}
+    </div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+{% endif %}
+</div>
+
+<div class="row">
+    <div class="col">
+        <form method="POST" action="{{ url_for('save') }}">
+            <h1>Traductor</h1>
+            <label for="spanish">Español:</label>
+            <input type="text" name="spanish" id="spanish" >
+            <label for="english">Ingles:</label>
+            <input type="text" name="english" id="english" >
+            <button type="submit" class="btn btn-default btn-success" >
+                <i>Guardar</i>
+            </button>
+        </form>
+    </div>
+    <div class="col">
+        <form method="POST" action="{{ url_for('search') }}">
+            <h2>Buscar Traduccion </h2>
+            <label for="query">Ingresa la palabra:</label>
+            <input type="text" name="query" id="query">
+            <label for="language">Selecciona el Idioma:</label>
+            <select name="language" id="language">
+                <option value="english">Español</option>
+                <option value="spanish">Ingles</option>
+            </select>
+            <button type="submit" class="btn btn-default btn-primary" >
+                <i>Buscar Palabra</i>
+            </button>
+        
+            <h1>Resultado</h1>
+            {% if translations %}
+                <ul>
+                {% for translation in translations %}
+                    <input type="text" value="{{translation}}" readonly>
+                {% endfor %}
+                </ul>
+            {% else %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    document.getElementById("english").addEventListener("input", function() {
+      this.value = this.value.toUpperCase();
+    });
+
+    document.getElementById("spanish").addEventListener("input", function() {
+      this.value = this.value.toUpperCase();
+    });
+
+    document.getElementById("query").addEventListener("input", function() {
+      this.value = this.value.toUpperCase();
+    });
+  </script>
+
+{% endblock %}
+

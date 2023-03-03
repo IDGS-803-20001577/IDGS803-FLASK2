@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/estilo.css">
     <title>Document</title>
     <style>
         body{
@@ -14,6 +15,7 @@
         .tr-head{background: yellow;}
     </style>
     <link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/estilo.css">
 </head>
 <body>
     <div class="navbar navbar navbar-inverse navbar-fixed-top">
@@ -46,15 +48,7 @@
         </div>
     </div>
     <div class="container">
-        {%with messages = get_flashed_messages() %}
-        {%if messages %}
-        {%for  message in messages%}
-        <div class="alert alert-success">
-            {{message}}
-        </div>
-        {%endfor%}
-        {%endif%}
-        {%endwith%}
+
     </div>
     {% block content %}
     

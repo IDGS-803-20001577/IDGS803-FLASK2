@@ -2,9 +2,21 @@
 
 {% block content %}
 
-<h1>Generar casillas</h1>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+    }
+    </style>
+
+
 
 <form method="post" action="/resultado">
+
+    <h1>Generar casillas</h1>
 
     <input type="hidden" name="num_casillas" value="{{ num_casillas }}">
 

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+    }
+    </style>
+
+<form >
+	<h1>El Resultado es </h1>
+    <h2>El minimo de los números ingresados en las casillas es: {{min_value}} </h2>
+
+    <h2>El maximo de los números ingresados en las casillas es: {{max_value}} </h2>
+
+    <h2>El Promedio de los números ingresados en las casillas es: {{ average_value }}</h2>
+
+    {% for number, count in count_dict.items() %}
+    
+	<h2>El número {{ number }} se repitió {{ count }} veces.</h2>
+          
+	{% endfor %}
+
+</form>
+{% endblock %}
